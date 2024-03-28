@@ -1,10 +1,14 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { EmployeeModule } from './employess/employee.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { UsersModule } from './users/users.module';
+import { ContactModule } from './contacts/contact.module';
+import { BooksModule } from './books/books.module';
+import { PagesModule } from './pages/pages.module';
+import { QuestionsModule } from './questions/questions.module';
+import { ResponsesModule } from './responses/responses.module';
 import { dataSourceOptions } from 'db/data-source';
-import { ProductsModule } from './products/products.module';
 
 @Module({
   imports: [
@@ -12,11 +16,15 @@ import { ProductsModule } from './products/products.module';
     //   type: 'sqlite',
     //   database: 'db.sqlite',
     //   entities: ['dist/**/*.entity.js'],
-    //   // synchronize: true,
+    //   synchronize: true,
     // }),
     TypeOrmModule.forRoot(dataSourceOptions),
-    UsersModule,
-    ProductsModule,
+    EmployeeModule,
+    ContactModule,
+    BooksModule,
+    PagesModule,
+    QuestionsModule,
+    ResponsesModule,
   ],
   controllers: [AppController],
   providers: [AppService],
